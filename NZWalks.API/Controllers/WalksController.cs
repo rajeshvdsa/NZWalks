@@ -27,7 +27,7 @@ namespace NZWalks.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddWalkRequestDto addWalkRequestDto)
         {
-            //map DTO to Domain model to mapp correctly
+            //map DTO to Domain model to mapp correctly and this is changed by github
             var domainWalks = mapper.Map<Walk>(addWalkRequestDto);
             await walkRepository.CreateAsync(domainWalks);
             // Domain model to DtO
