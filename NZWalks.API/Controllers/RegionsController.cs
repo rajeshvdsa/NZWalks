@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NZWalks.API.Data;
+using NZWalks.API.Exceptions;
 using NZWalks.API.Models.Domain;
 using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
@@ -54,7 +55,7 @@ namespace NZWalks.API.Controllers
 
             if (Region == null)
             {
-                return NotFound();
+                throw new ResourceNotFoundException("Region", id.ToString());
             }
 
             //map Region Domain Model to Region DTO
