@@ -134,13 +134,15 @@ var app = builder.Build();
 app.UseGlobalExceptionHandling();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
-// app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    // Enable HTTPS redirection and HSTS in production
+    app.UseHttpsRedirection();
+    app.UseHsts();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();
